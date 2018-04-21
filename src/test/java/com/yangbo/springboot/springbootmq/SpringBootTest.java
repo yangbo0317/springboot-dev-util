@@ -42,9 +42,10 @@ public class SpringBootTest {
         mimeMessageHelper.setFrom("1370151513@qq.com");
         mimeMessageHelper.setTo("2252625006@qq.com");
         mimeMessageHelper.setSubject("邮件，带有附件");
-        mimeMessageHelper.setText("正文，请查收");
+        mimeMessageHelper.setText("<html><body><img src='cid:qqimage' ></body></html>",true);
         FileSystemResource fileSystemResource = new FileSystemResource(new File("/Users/yangbo/Desktop/WX20180421-130339@2x.png"));
-        mimeMessageHelper.addAttachment("附件",fileSystemResource);
+        //mimeMessageHelper.addAttachment("附件",fileSystemResource);
+        mimeMessageHelper.addInline("qqimage",fileSystemResource);
         javaMailSender.send(mimeMessage);
     }
 }
