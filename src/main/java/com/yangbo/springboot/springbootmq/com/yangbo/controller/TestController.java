@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 /**
  * yangbo
  * 2018-04-14
- * springboot-mq
+ * springboot-mq1
  **/
 @RestController
 public class TestController {
