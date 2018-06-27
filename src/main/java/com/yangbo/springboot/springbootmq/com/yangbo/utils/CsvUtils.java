@@ -14,8 +14,7 @@ import java.nio.charset.Charset;
  **/
 public class CsvUtils {
     public static void main(String[] args) {
-        //csvWrite("/Users/yangbo/Desktop/testcsvwrite.csv");
-
+        csvWrite("/Users/yangbo/Desktop/testcsvwrite.csv");
     }
 
     public static String csvRead(String filePath) {
@@ -37,10 +36,32 @@ public class CsvUtils {
 
         return null;
     }
+    public static String csvWrite(String filePath) {
+        if(StringUtils.isBlank(filePath)){
+            return null;
+        }
+        try {
+            // 创建CSV写对象
+            CsvWriter csvWriter = new CsvWriter(filePath,',', Charset.forName("UTF-8"));
+
+            // 写表头
+            String[] headers = {"编号","姓名","年龄"};
+            String[] content = {"12365","张山","34"};
+            csvWriter.writeRecord(headers);
+            for (int i = 0; i < 4; i++) {
+                csvWriter.writeRecord(content);
+            }
+            csvWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static String csvWrite(String[] headers,String[] content,String filePath) {
         try {
             // 创建CSV写对象
             CsvWriter csvWriter = getCsvWriter(filePath);
+
             // 写表头
             csvWriter.writeRecord(headers);
             csvWriter.writeRecord(content);

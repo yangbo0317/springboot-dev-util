@@ -18,8 +18,12 @@ public class TestController {
     private RabbitMqSender rabbitMqSender;
     @RequestMapping(value = "hello")
     public String testHello(){
+        try {
+            rabbitMqSender.sendNoticeMsg("notice.normal111","1");
+        }catch (Exception  e){
 
-        rabbitMqSender.sendNoticeMsg("notice.normal","1");
+        }
+        System.out.println();
         return "hello";
     }
 }
