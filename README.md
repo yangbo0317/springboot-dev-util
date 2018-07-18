@@ -2,12 +2,12 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/yangbo0317/springboot-dev-util/pulls)
-[![GitHub stars](https://img.shields.io/github/stars/yangbo0317/springboot-dev-util.svg?style=social&label=Stars)](https://github.com/yangbo0317/springboot-dev-util)
-[![GitHub forks](https://img.shields.io/github/forks/yangbo0317/springboot-dev-util.svg?style=social&label=Fork)](https://github.com/yangbo0317/springboot-dev-util)
 
 
 ## 前言
-    `springboot-dev-util`项目创建于2018年5月，正在慢慢成长中，目的不仅仅是一个开发架构，而是努力打造一套从 **前端模板** - **基础框架** - **分布式架构** - **开源项目** - **持续集成** - **自动化部署** - **系统监测** - **无缝升级** 的全方位J2EE企业级开发解决方案。
+    `springboot-dev-util`项目创建于2018年5月，正在慢慢成长中，目的不仅仅是一个开发架构，而是努力打造一套从 **前端模板** 
+    - **基础框架** - **分布式架构** - **开源项目** - **持续集成** - **自动化部署** - **系统监测** - **无缝升级** 
+    的全方位J2EE企业级开发解决方案。
 　　
 ## 项目介绍
 ### 目前项目已经整合了：
