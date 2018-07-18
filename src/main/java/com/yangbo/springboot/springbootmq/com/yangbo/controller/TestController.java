@@ -28,9 +28,7 @@ import java.util.List;
 public class TestController {
     @Resource
     private RabbitMqSender rabbitMqSender;
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    @Autowired
-    private UserMapper userMapper;
+
     @RequestMapping(value = "hello")
     public String testHello(@RequestBody User user){
         try {
@@ -41,18 +39,6 @@ public class TestController {
         }
         System.out.println();
         return "hello";
-    }
-
-    @RequestMapping(value="adduser")
-    public String addUser(@RequestBody User user){
-        userMapper.insert(user.getName(),user.getGender());
-        return "";
-    }
-    @RequestMapping(value="getUser")
-    public String getUser(@RequestParam(value="name") String name){
-        List<User> list =userMapper.findByName(name);
-        System.out.println(list.size());
-        return "";
     }
 
 }
