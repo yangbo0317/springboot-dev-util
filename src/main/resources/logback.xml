@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <!-- MaxHistory:日志保存的天数 -->
+
+    <property name="logBase" value="/Users/yangbo/data/log/springboot-dev-util"/>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yy/MM/dd HH:mm:ss.SSS} [%-5level] %line %logger{20} - %msg %n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>NEUTRAL</onMismatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>${logBase}/base.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${logBase}/base.%d{yyyy-MM-dd}_%i.log.gz
+            </fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logBase}/base.%d{yyyy-MM-dd}_%i.log.gz
+            </fileNamePattern>
+            <maxFileSize>200MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%d{yy/MM/dd HH:mm:ss.SSS} [%-5level] %line %logger{20} - %msg %n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+
+    </appender>
+
+    <appender name="errors" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>${logBase}/base_error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${logBase}/base_error.%d{yyyy-MM-dd}_%i.log.gz
+            </fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logBase}/base_error.%d{yyyy-MM-dd}_%i.log.gz
+            </fileNamePattern>
+            <maxFileSize>200MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%d{yy/MM/dd HH:mm:ss.SSS} [%-5level] %line %logger{20} - %msg %n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+
+    <logger name="net.spy.memcached" level="info"/>
+    <logger name="org.springframework" level="error"/>
+
+    <!-- 日志级别：TRACE < DEBUG < INFO < WARN < ERROR -->
+    <root level="INFO">
+        <!-- 输出到控制台  -->
+        <appender-ref ref="stdout" level="debug"/>
+
+        <!-- 当前级别可输出的日志全部写入一个文件 -->
+        <appender-ref ref="file"/>
+
+        <!-- error级别日志单独写入一个文件 -->
+        <appender-ref ref="errors"/>
+    </root>
+
+</configuration>
