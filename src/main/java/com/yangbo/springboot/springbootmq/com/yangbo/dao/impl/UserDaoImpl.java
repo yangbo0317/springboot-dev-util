@@ -26,4 +26,9 @@ public class UserDaoImpl implements UserDao {
         List<User> userList = userMapper.findByName(user.getName());
         return userList;
     }
+
+    @Override
+    public int insertUser(User user) {
+        return userMapper.insert(user.getName(),user.getGender());
+    }
 }
