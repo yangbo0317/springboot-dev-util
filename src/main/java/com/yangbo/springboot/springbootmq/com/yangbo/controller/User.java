@@ -14,8 +14,16 @@ public class User {
     private Long id;
     private String name;
     private Integer gender;
-    private String adsress;
+    private String address;
     private Date createTime;
     private Date updateTime;
+    public User(){
+
+    }
+    public User(String name,Integer gender,String address){
+        this.name = name;
+        this.gender = gender;
+        this.address = address;
+    }
 
 }

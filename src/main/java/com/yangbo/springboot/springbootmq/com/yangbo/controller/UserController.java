@@ -1,5 +1,6 @@
 package com.yangbo.springboot.springbootmq.com.yangbo.controller;
 
+import com.yangbo.springboot.springbootmq.com.yangbo.dao.UserDao;
 import com.yangbo.springboot.springbootmq.com.yangbo.mapper.UserMapper;
 import com.yangbo.springboot.springbootmq.com.yangbo.utils.JackJsonUtil;
 import io.swagger.annotations.Api;
@@ -24,7 +25,7 @@ import java.util.List;
 public class UserController {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
-    private UserMapper userMapper;
+    private UserDao userDao;
     @Autowired
     private JackJsonUtil jackJsonUtil;
 
@@ -32,7 +33,7 @@ public class UserController {
     @ApiOperation("用户注册")
     @RequestMapping(value="addUser",method=RequestMethod.POST)
     public String addUser(@RequestBody User user){
-        userMapper.insert(user.getName(),user.getGender());
+        userDao.findUserListByName(user);
         return "";
     }
     @ApiOperation("获取用户信息")
@@ -43,7 +44,8 @@ public class UserController {
     })
     public String getUser(@RequestParam(value="name") String name){
         LOGGER.info("name="+name);
-        List<User> list =userMapper.findByName(name);
+
+        List<User> list =userDao.findUserListByName(new User(name,1,"北京"));
         System.out.println(list.size());
         return jackJsonUtil.writeString(list);
     }
