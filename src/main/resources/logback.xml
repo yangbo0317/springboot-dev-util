@@ -3,7 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <!-- MaxHistory:日志保存的天数 -->
 
-    <property name="logBase" value="/Users/yangbo/data/log/springboot-dev-util"/>
+    <property name="logBase" value="/data/log/springboot-dev-util"/>
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
